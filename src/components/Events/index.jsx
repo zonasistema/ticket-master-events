@@ -3,7 +3,6 @@ import { useState } from "react";
 import EventItem from "./components/EventItem";
 import eventsJSON from '../../data/events.json';
 
-const { _embedded: { events } } = data;
 
 const Events = () => {
     const [data] = useState(eventsJSON);

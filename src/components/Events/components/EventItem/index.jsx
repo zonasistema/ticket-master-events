@@ -1,4 +1,4 @@
-const EventItem = ( { info, name, image }) => {
+const EventItem = ( { info, name, image, onEventClick }) => {
     return (
         <div>
             <img src={image} alt={name} width={200} height={200}/>
