@@ -15,4 +15,4 @@ const EventItem = ( { info, id, name, image, onEventClick }) => {
     );
 };
 
-export default EventItemls
+export default EventItem
