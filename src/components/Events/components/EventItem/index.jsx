@@ -8,4 +8,4 @@ const EventItem = ( { info, name, image, onEventClick }) => {
     );
 };
 
-export default EventItem
+export default EventItemls
