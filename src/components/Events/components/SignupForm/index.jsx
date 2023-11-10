@@ -1,63 +1,47 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 //Creamos un componente formulario
 const SignupForm = () => {
-    //Declaramos todas las variables y estados de los imput del formulario con useState vacío
-    const [name, setName] = useState('');
-    const [age, setAge] = useState('');
-    const [address, setAddress] = useState('');
-    const [zipcode, setZipcode] = useState('');
-    const [phone, setPhone] = useState('');
-    
-    //Declaramos la función del boton clear 
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
     const handleClearClick = () => {
-        setName('');
-        setAddress('');
-        setAge('');
-        setPhone('');
-        setZipcode('');
+        reset();
     };
 
-    // Declaramos la función del botón submit
-    // Los submit por defecto, refrescan la página. Por ello colocamos el argumento evt y lo eliminamos con preventDefault()
-    const handleSubmitForm = (evt) => {
+    const handleSubmitForm = (data) => {
         //preventDefault: Elimina el refrescamiento de la página
-        evt.preventDefault();
-        console.log('submit', {
-            name,
-            age,
-            zipcode,
-            phone,
-            address
-        });
+       console.log(data);
 
     };
+
+    console.log(errors);
+
     return (
         // declaramos una función flecha onChange con el argumento evt que toma el target.value y cambia el valor.
-        <form name="formEvents" onSubmit={handleSubmitForm}>
+        <form name="formEvents" onSubmit={handleSubmit(handleSubmitForm)}>
             <label>
                 Name
-                <input value={name} onChange={evt => setName(evt.target.value)} required />
+                <input {...register('name', {required: true })} />
             </label>
             <br />
             <label>
                 Age
-                <input value={age} onChange={evt => setAge(evt.target.value)} required />
+                <input {...register('age', {required: true })} />
             </label>
             <br />
             <label>
                 Address
-                <input value={address} onChange={evt => setAddress(evt.target.value)} required />
+                <input {...register('address', {required: true })} />
             </label>
             <br />
             <label>
                 ZipCode
-                <input value={zipcode} onChange={evt => setZipcode(evt.target.value)} required />
-            </label>
+                <input {...register('zipcode', {required: true })} />
             <br />
-            <label>
+            </label>
+            <label for="phone">
                 Phone
-                <input value={phone} onChange={evt => setPhone(evt.target.value)} required />
+                <input {...register('phone', {required: true })} />
             </label>
             <br />
             <div>
